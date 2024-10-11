@@ -7,11 +7,10 @@ int main() {
     SetConsoleOutputCP(1251);
 
     const int r = 3;
-    const int c = 3;
+    const int c = 2;
     int array[r][c] = {
-        {-1, 2, -3},
-        {4, -5, 6},
-        {-7, 8, -9}
+        {7, -1, 2},
+        {-2, 6, -5}
     };
 
     int sum = 0;
