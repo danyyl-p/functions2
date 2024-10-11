@@ -1,50 +1,61 @@
-﻿#include <iostream>
-#include <string>
-#include <windows.h>
-
+#include <iostream>
+#include <windows.h> 
 using namespace std;
-// Функция определяющая знак числа
-void findsign(int x)
-{
-	if (x < 0)
-	{
-		cout << x << " - отрицательное" << endl;
-	}
-	else if (x > 0)
-	{
-		cout << x << " - положительное" << endl;
-	}
-	else
-	{
-		cout << "число равно 0" << endl;
-	}
-}
-// Функция среднего значения
-float srznach(int y1, int y2)
-{
-	float sz = (y1 + y2) / 2;
-	cout << "Среднее значение: " << sz << endl;
-	return sz;
-}
-// Функция опрделяющая четность числа
-void chetnechet(int x)
-{
-	if (x % 2 == 0)
-	{
-		cout << "Число чётное" << endl;
-	}
-	else if (x % 2 != 0)
-	{
-		cout << "Число нечётное" << endl;
-	}
-}
-int main()
-{
-	SetConsoleCP(1251); SetConsoleOutputCP(1251);
-	int x = -312;
-	int a1 = 13;
-	int a2 = 12;
-	findsign(x);
-	srznach(a1, a2);
-	chetnechet(a1);
+
+int main() {
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+
+    const int r = 3;
+    const int c = 3;
+    int array[r][c] = {
+        {-1, 2, -3},
+        {4, -5, 6},
+        {-7, 8, -9}
+    };
+
+    int sum = 0;
+    int positiveCount = 0, negativeCount = 0;
+    int Min = array[0][0], Max = array[0][0]; 
+
+    cout << "Положительные: ";
+    for (int i = 0; i < r; i++) {
+        for (int j = 0; j < c; j++) {
+            sum += array[i][j];
+
+            if (array[i][j] < Min) {
+                Min = array[i][j];
+            }
+            if (array[i][j] > Max) {
+                Max = array[i][j];
+            }
+
+            if (array[i][j] > 0) {
+                cout << array[i][j] << " ";
+                positiveCount++;
+            }
+        }
+    }
+
+    cout << "Отрицательные: ";
+    for (int i = 0; i < r; i++) {
+        for (int j = 0; j < c; j++) {
+            if (array[i][j] < 0) {
+                cout << array[i][j] << " ";
+                negativeCount++;
+            }
+        }
+    }
+
+    int totalElements = r * c;
+    double average = static_cast<double>(sum) / totalElements;
+
+    cout << "\nМинимальное значение: " << Min << endl;
+    cout << "Максимальное значение: " << Max << endl;
+    cout << "Сумма: " << sum << endl;
+    cout << "Среднее: " << average << endl;
+    cout << "Всего положительных: " << positiveCount << endl;
+    cout << "Всего отрицательных: " << negativeCount << endl;
+
+    return 0;
 }
